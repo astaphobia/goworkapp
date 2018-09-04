@@ -1,5 +1,6 @@
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 module.exports = {
     entry: [
@@ -42,7 +43,16 @@ module.exports = {
                     }
                 }
             },
+            {
+                test: /\.css$/,
+                use: [
+                    {
+                        loader: MiniCssExtractPlugin.loader,
+                    },
+                    'css-loader'
 
+                ]
+            }
         ]
     },
     plugins: [
@@ -50,6 +60,7 @@ module.exports = {
             template: './src/index.html',
             filename: './index.html'
         }),
+        new MiniCssExtractPlugin(),
         new webpack.HotModuleReplacementPlugin(),
     ]
 }
