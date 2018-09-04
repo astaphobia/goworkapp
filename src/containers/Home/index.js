@@ -6,6 +6,7 @@ import PropTypes from 'prop-types'
 
 import * as actions from './actions'
 import CardWrapper from '@/components/CardWrapper'
+import Loader from '@/components/Loader'
 
 class Home extends React.Component {
     static propTypes = {
@@ -19,9 +20,13 @@ class Home extends React.Component {
         const { jobs } = this.props
         return (
             <div className="container">
-                <CardWrapper>
-                        {jobs.map((job, index) => <CardWrapper.Card key={index} item={job} />)}
-                </CardWrapper>
+                {jobs.length >= 1 && (
+                    <CardWrapper>
+                        {jobs.map((job, index) => (
+                            <CardWrapper.Card key={index} item={job} />
+                        ))}
+                    </CardWrapper>
+                ) || <Loader />}
             </div>
         )
     }

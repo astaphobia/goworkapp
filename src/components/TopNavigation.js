@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 const TopNavigation = () => {
     return (
-        <nav className="navbar navbar-expand-lg navbar-light bg-primary">
+        <nav className="navbar navbar-expand-lg navbar-light bg-danger">
             <div className="container">
                 <Link to={'/'} className="navbar-brand">
                     <img src={TopLogo} width="120px" />
