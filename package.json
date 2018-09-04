@@ -8,7 +8,24 @@
   "private": false,
   "scripts": {
     "build": "webpack --config webpack.config.js --mode development",
+    "test": "jest",
     "start": "webpack-dev-server --open --config webpack.config.js --mode development"
+  },
+  "jest": {
+    "moduleDirectories": [
+      "node_modules"
+    ],
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ],
+    "setupFiles": [
+      "<rootDir>testSetup.js"
+    ],
+    "resolver": "jest-webpack-resolver",
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
+      "\\.(css|less)$": "identity-obj-proxy"
+    }
   },
   "dependencies": {
     "axios": "^0.18.0",
@@ -31,14 +48,24 @@
     "@babel/plugin-transform-arrow-functions": "^7.0.0",
     "@babel/plugin-transform-block-scoped-functions": "^7.0.0",
     "@babel/plugin-transform-destructuring": "^7.0.0",
+    "@babel/plugin-transform-runtime": "^7.0.0",
     "@babel/plugin-transform-spread": "^7.0.0",
     "@babel/preset-env": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
+    "@babel/runtime": "^7.0.0",
+    "babel-core": "7.0.0-bridge.0",
     "babel-loader": "^8.0.2",
     "css-loader": "^1.0.0",
+    "enzyme": "^3.5.1",
+    "enzyme-adapter-react-16": "^1.4.0",
+    "enzyme-to-json": "^3.3.4",
     "file-loader": "^2.0.0",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
+    "husky": "^0.14.3",
+    "jest": "^23.5.0",
+    "jest-cli": "^23.5.0",
+    "jest-webpack-resolver": "^0.3.0",
     "mini-css-extract-plugin": "^0.4.2",
     "redux-devtools-extension": "^2.13.5",
     "redux-logger": "^3.0.6",

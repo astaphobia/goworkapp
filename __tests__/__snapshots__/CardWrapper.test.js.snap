@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Wrapper hope doing well wrapper 1`] = `
+<div
+  className="list"
+>
+  <Card
+    item={
+      Object {
+        "name": "mock",
+      }
+    }
+    key="0"
+  />
+  <Card
+    item={
+      Object {
+        "name": "mock-2",
+      }
+    }
+    key="1"
+  />
+</div>
+`;
