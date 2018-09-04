@@ -39,7 +39,7 @@ module.exports = {
                 use: {
                     loader: 'file-loader',
                     options: {
-                        name: '/img/[name].[ext]'
+                        name: '[path][name]-[hash:8].[ext]'
                     }
                 }
             },
@@ -58,9 +58,11 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             template: './src/index.html',
-            filename: './index.html'
+            filename: './index.html',
+            favicon: './src/favicon.ico'
         }),
         new MiniCssExtractPlugin(),
+        new webpack.NoEmitOnErrorsPlugin(),
         new webpack.HotModuleReplacementPlugin(),
     ]
 }
