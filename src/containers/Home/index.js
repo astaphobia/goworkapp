@@ -1,29 +1,34 @@
 import React from 'react'
-import {connect} from 'react-redux'
-import {bindActionCreators} from 'redux'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { withRouter } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
 import * as actions from './actions'
+import CardWrapper from '@/components/CardWrapper'
 
 class Home extends React.Component {
     static propTypes = {
         actions: PropTypes.object,
         jobs: PropTypes.array
     }
-    componentWillMount(){
+    componentWillMount() {
         this.props.actions.fetchJobs()
     }
-    render(){
+    render() {
+        const { jobs } = this.props
         return (
             <div className="container">
-                <h1>Home Page</h1>
+                <CardWrapper>
+                        {jobs.map((job, index) => <CardWrapper.Card key={index} item={job} />)}
+                </CardWrapper>
             </div>
         )
     }
 }
 
 function mapStateToProps(state) {
-    return state.job
+    return { ...state.job }
 }
 function mapDispatchToProps(dispatch) {
     return {

@@ -1,10 +1,17 @@
 import React from 'react'
-import { Route, Switch } from 'react-router-dom'
+import { Route, Switch, withRouter } from 'react-router-dom'
+import { connect } from 'react-redux'
 
+import Ads from '@/components/Ads'
 import Home from './containers/Home'
 
-export default () => (
-    <Switch>
-        <Route path="/" component={Home}/>
-    </Switch>
-)
+class Routes extends React.Component {
+    render() {
+        return (
+            <Switch>
+                <Route exact path="/" component={Ads(Home)} />
+            </Switch>
+        )
+    }
+}
+export default withRouter(connect()(Routes))
