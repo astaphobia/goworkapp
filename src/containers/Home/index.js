@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { withRouter } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
 import * as actions from './actions'
@@ -13,17 +13,26 @@ class Home extends React.Component {
         actions: PropTypes.object,
         jobs: PropTypes.array
     }
+    state = {
+        jobId: false
+    }
+    handleClickItem = (id) => {
+        this.setState({jobId: id})
+    }
     componentWillMount() {
         this.props.actions.fetchJobs()
     }
     render() {
         const { jobs } = this.props
+        if(this.state.jobId){
+            return <Redirect to={`/${this.state.jobId}`}/>
+        }
         return (
             <div className="container">
                 {jobs.length >= 1 && (
                     <CardWrapper>
                         {jobs.map((job, index) => (
-                            <CardWrapper.Card key={index} item={job} />
+                            <CardWrapper.Card key={index} item={job} onClick={() => this.handleClickItem(job.id)}/>
                         ))}
                     </CardWrapper>
                 ) || <Loader />}

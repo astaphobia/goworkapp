@@ -16,7 +16,14 @@ html, body {
 .job-card .card-footer{
     background-color: transparent;
 }
-
+.job-detail .card-header {
+  padding: 0 0 5px 0;
+  background-color: transparent;
+  border-bottom: 0;
+}
+.job-detail .card-footer {
+  background-color: transparent;
+}
 .spinner {
     -webkit-animation: rotator 1.4s linear infinite;
             animation: rotator 1.4s linear infinite;

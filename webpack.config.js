@@ -73,5 +73,10 @@ module.exports = {
         new MiniCssExtractPlugin(),
         new webpack.NoEmitOnErrorsPlugin(),
         new webpack.HotModuleReplacementPlugin(),
-    ]
+    ],
+    devServer: {
+        contentBase: process.cwd() + '/public',
+        publicPath: '/',
+        historyApiFallback: true,
+    }
 }

@@ -1,5 +1,6 @@
 const initialState = {
-    jobs: []
+    jobs: [],
+    jobDetail: {}
 }
 
 export default (state = initialState, action) => {
@@ -8,6 +9,18 @@ export default (state = initialState, action) => {
             state = {
                 ...state,
                 jobs: action.payload.data
+            }
+            return state
+        case 'FETCH_JOB_DETAIL_PENDING':
+            state = {
+                ...state,
+                jobDetail: {}
+            }
+            return state
+        case 'FETCH_JOB_DETAIL_FULFILLED':
+            state = {
+                ...state,
+                jobDetail: action.payload.data
             }
             return state
         default:

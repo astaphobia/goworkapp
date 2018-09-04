@@ -1,16 +1,15 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import Image from '@/components/Image'
-
 class Card extends React.Component {
     static propTypes = {
         item: PropTypes.object,
+        onClick: PropTypes.func
     }
     render() {
-        const { item } = this.props
+        const { item, onClick } = this.props
         return (
-            <div className="card job-card" style={{ margin: '0 0 20px 0' }}>
+            <div className="card job-card" style={{ margin: '0 0 20px 0', cursor: 'pointer' }} onClick={onClick}>
                 <div className="card-body">
                     {item && (
                         <React.Fragment>
